@@ -16,12 +16,13 @@ fun main( args : Array<String> ) {
   get("/hello") { req, res -> "hello world" }
 
   post("/test") { req, res -> 
-    print( req.queryParams() ) // input format as list
-    print( req.queryMap().toMap() ) // input format as map
+    println( req.body() )
+    println( req.queryParams() ) // input format as list
+    //print( req.queryMap().toMap() ) // input format as map
 
     // get first entry of queryParams
-    val first = req.queryParams().first()
-    val obj = JSON.parse<Order>(first)
+    val body = req.body()
+    val obj = JSON.parse<Order>(body)
 
     // implimation some logic here
     val ret = when( obj.type ) {
