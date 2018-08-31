@@ -9,6 +9,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  
   def do_GET(self):
     print("Client requested:", self.command, self.path )
+    print("test")
     http.server.SimpleHTTPRequestHandler.do_GET(self)
     self.wfile.write(bytes("Hello World !",'utf8'))
   
